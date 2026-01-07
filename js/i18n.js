@@ -143,3 +143,21 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.textAlign = 'left';
     }
 });
+en: {
+    // Existantes...
+    details: 'Details',
+    notFound: 'Item not found',
+    exportPDF: 'Export PDF'
+},
+fr: {
+    // Existantes...
+    details: 'Détails',
+    notFound: 'Élément non trouvé',
+    exportPDF: 'Exporter PDF'
+},
+ar: {
+    // Existantes...
+    details: 'التفاصيل',
+    notFound: 'العنصر غير موجود',
+    exportPDF: 'تصدير PDF'
+}
