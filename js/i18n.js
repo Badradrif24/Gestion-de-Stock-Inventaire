@@ -1,4 +1,4 @@
-// js/i18n.js (ajouté les clés pour toutes les entités)
+// js/i18n.js
 const translations = {
     en: {
         dashboard: 'Dashboard',
@@ -38,7 +38,16 @@ const translations = {
         product: 'Product',
         quantity: 'Quantity',
         date: 'Date',
-        purchaseOrderForm: 'Purchase Order Form'
+        purchaseOrderForm: 'Purchase Order Form',
+        details: 'Details',
+        notFound: 'Item not found',
+        exportPDF: 'Export PDF',
+        totalProducts: 'Total Products',
+        totalSuppliers: 'Total Suppliers',
+        lowStock: 'Low Stock Items',
+        totalOrders: 'Total Orders',
+        totalCategories: 'Total Categories',
+        allSuppliers: 'All Suppliers'
     },
     fr: {
         dashboard: 'Tableau de bord',
@@ -78,7 +87,16 @@ const translations = {
         product: 'Produit',
         quantity: 'Quantité',
         date: 'Date',
-        purchaseOrderForm: 'Formulaire Commande d\'Achat'
+        purchaseOrderForm: 'Formulaire Commande d\'Achat',
+        details: 'Détails',
+        notFound: 'Élément non trouvé',
+        exportPDF: 'Exporter PDF',
+        totalProducts: 'Total Produits',
+        totalSuppliers: 'Total Fournisseurs',
+        lowStock: 'Articles en Stock Bas',
+        totalOrders: 'Total Commandes',
+        totalCategories: 'Total Catégories',
+        allSuppliers: 'Tous les Fournisseurs'
     },
     ar: {
         dashboard: 'لوحة القيادة',
@@ -118,7 +136,16 @@ const translations = {
         product: 'المنتج',
         quantity: 'الكمية',
         date: 'التاريخ',
-        purchaseOrderForm: 'نموذج طلب الشراء'
+        purchaseOrderForm: 'نموذج طلب الشراء',
+        details: 'التفاصيل',
+        notFound: 'العنصر غير موجود',
+        exportPDF: 'تصدير PDF',
+        totalProducts: 'إجمالي المنتجات',
+        totalSuppliers: 'إجمالي الموردين',
+        lowStock: 'عناصر مخزون منخفض',
+        totalOrders: 'إجمالي الطلبات',
+        totalCategories: 'إجمالي الفئات',
+        allSuppliers: 'جميع الموردين'
     }
 };
 
@@ -143,21 +170,3 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.textAlign = 'left';
     }
 });
-en: {
-    // Existantes...
-    details: 'Details',
-    notFound: 'Item not found',
-    exportPDF: 'Export PDF'
-},
-fr: {
-    // Existantes...
-    details: 'Détails',
-    notFound: 'Élément non trouvé',
-    exportPDF: 'Exporter PDF'
-},
-ar: {
-    // Existantes...
-    details: 'التفاصيل',
-    notFound: 'العنصر غير موجود',
-    exportPDF: 'تصدير PDF'
-}

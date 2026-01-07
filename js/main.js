@@ -1,5 +1,5 @@
-// js/main.js (complet, avec init pour toutes les entités et logique ajustée pour chacune)
- // Vérification de session pour toutes les pages sauf login
+// js/main.js
+// Vérification de session pour toutes les pages sauf login
 if (window.location.pathname !== '/index.html' && window.location.pathname !== '/' && !localStorage.getItem('loggedIn')) {
     window.location.href = 'index.html';
 }
@@ -10,7 +10,7 @@ function logout() {
     window.location.href = 'index.html';
 }
 
-// Logique CRUD générale (appelée par initCRUD pour chaque page)
+// Logique CRUD générale
 let currentPage = 1;
 const pageSize = 10;
 let data = [];
@@ -115,7 +115,7 @@ function sortTable(col) {
 
 const searchInput = document.getElementById('search');
 if (searchInput) searchInput.addEventListener('input', (e) => {
-    filteredData = data.filter(item => item.name.toLowerCase().includes(e.target.value.toLowerCase()));
+    filteredData = data.filter(item => item.name.toLowerCase().includes(e.target.value.toLowerCase()) || item.product.toLowerCase().includes(e.target.value.toLowerCase()));
     renderTable(1);
 });
 
@@ -133,27 +133,22 @@ if (crudForm) crudForm.addEventListener('submit', (e) => {
         newItem.price = parseFloat(document.getElementById('price').value);
         newItem.stock = parseInt(document.getElementById('stock').value);
         newItem.supplier = document.getElementById('supplier').value;
-        saveData('products', data);
     } else if (path.includes('suppliers.html')) {
         newItem.name = document.getElementById('name').value;
         newItem.contact = document.getElementById('contact').value;
         newItem.address = document.getElementById('address').value;
-        saveData('suppliers', data);
     } else if (path.includes('warehouses.html')) {
         newItem.name = document.getElementById('name').value;
         newItem.location = document.getElementById('location').value;
         newItem.capacity = parseInt(document.getElementById('capacity').value);
-        saveData('warehouses', data);
     } else if (path.includes('categories.html')) {
         newItem.name = document.getElementById('name').value;
         newItem.description = document.getElementById('description').value;
-        saveData('categories', data);
     } else if (path.includes('purchaseOrders.html')) {
         newItem.product = document.getElementById('product').value;
         newItem.quantity = parseInt(document.getElementById('quantity').value);
         newItem.date = document.getElementById('date').value;
         newItem.supplier = document.getElementById('supplier').value;
-        saveData('purchaseOrders', data);
     }
     if (id) {
         const index = data.findIndex(item => item.id === id);
@@ -161,6 +156,8 @@ if (crudForm) crudForm.addEventListener('submit', (e) => {
     } else {
         data.push(newItem);
     }
+    const entity = path.split('/').pop().replace('.html', '');
+    saveData(entity, data);
     filteredData = data;
     renderTable(currentPage);
     bootstrap.Modal.getInstance(document.getElementById('crudModal')).hide();
@@ -190,7 +187,7 @@ function editItem(id) {
     } else if (path.includes('purchaseOrders.html')) {
         document.getElementById('product').value = item.product;
         document.getElementById('quantity').value = item.quantity;
-        document.getElementById('date').value = item.date;
+        document.getElementById('date').value = item.date.split('T')[0]; // Format date
         document.getElementById('supplier').value = item.supplier;
     }
     new bootstrap.Modal(document.getElementById('crudModal')).show();
@@ -200,12 +197,7 @@ function deleteItem(id) {
     if (confirm('Êtes-vous sûr ?')) {
         data = data.filter(item => item.id !== id);
         const path = window.location.pathname;
-        let entity = '';
-        if (path.includes('products.html')) entity = 'products';
-        if (path.includes('suppliers.html')) entity = 'suppliers';
-        if (path.includes('warehouses.html')) entity = 'warehouses';
-        if (path.includes('categories.html')) entity = 'categories';
-        if (path.includes('purchaseOrders.html')) entity = 'purchaseOrders';
+        const entity = path.split('/').pop().replace('.html', '');
         saveData(entity, data);
         filteredData = data;
         renderTable(currentPage);

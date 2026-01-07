@@ -1,7 +1,8 @@
+// js/data.js (inchangé)
 const entities = ['products', 'suppliers', 'warehouses', 'categories', 'purchaseOrders'];
 
 function generateFakeData(entity, count = 50) {
-    const faker = window.faker; // Assure-toi que faker.min.js est chargé avant
+    const faker = window.faker;
     switch (entity) {
         case 'products':
             return Array.from({length: count}, () => ({

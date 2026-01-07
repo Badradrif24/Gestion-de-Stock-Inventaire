@@ -50,8 +50,8 @@
             </nav>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <h2 data-i18n="details">Détails</h2>
-<div id="detailsContent" class="card p-4"></div>
-<button class="btn btn-primary mt-3" onclick="exportPDF()" data-i18n="exportPDF">Exporter PDF</button>
+                <div id="detailsContent" class="card p-4"></div>
+                <button class="btn btn-primary mt-3" onclick="exportPDF()" data-i18n="exportPDF">Exporter PDF</button>
             </main>
         </div>
     </div>
@@ -59,67 +59,67 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="js/libs/papaparse.min.js"></script>
+    <script src="js/data.js"></script>
     <script src="js/main.js"></script>
     <script src="js/i18n.js"></script>
     <script>
-    const params = new URLSearchParams(window.location.search);
-    const entity = params.get('entity');
-    const id = params.get('id');
-    const item = getData(entity).find(i => i.id === id);
+        const params = new URLSearchParams(window.location.search);
+        const entity = params.get('entity');
+        const id = params.get('id');
+        const item = getData(entity).find(i => i.id === id);
 
-    const content = document.getElementById('detailsContent');
-    if (item) {
-        let html = '';
-        if (entity === 'products') {
-            html = `
-                <p><strong data-i18n="name">Nom :</strong> ${item.name}</p>
-                <p><strong data-i18n="category">Catégorie :</strong> ${item.category}</p>
-                <p><strong data-i18n="price">Prix :</strong> ${item.price}</p>
-                <p><strong data-i18n="stock">Stock :</strong> ${item.stock}</p>
-                <p><strong data-i18n="supplier">Fournisseur :</strong> ${item.supplier}</p>
-            `;
-        } else if (entity === 'suppliers') {
-            html = `
-                <p><strong data-i18n="name">Nom :</strong> ${item.name}</p>
-                <p><strong data-i18n="contact">Contact :</strong> ${item.contact}</p>
-                <p><strong data-i18n="address">Adresse :</strong> ${item.address}</p>
-            `;
-        } else if (entity === 'warehouses') {
-            html = `
-                <p><strong data-i18n="name">Nom :</strong> ${item.name}</p>
-                <p><strong data-i18n="location">Localisation :</strong> ${item.location}</p>
-                <p><strong data-i18n="capacity">Capacité :</strong> ${item.capacity}</p>
-            `;
-        } else if (entity === 'categories') {
-            html = `
-                <p><strong data-i18n="name">Nom :</strong> ${item.name}</p>
-                <p><strong data-i18n="description">Description :</strong> ${item.description}</p>
-            `;
-        } else if (entity === 'purchaseOrders') {
-            html = `
-                <p><strong data-i18n="product">Produit :</strong> ${item.product}</p>
-                <p><strong data-i18n="quantity">Quantité :</strong> ${item.quantity}</p>
-                <p><strong data-i18n="date">Date :</strong> ${item.date}</p>
-                <p><strong data-i18n="supplier">Fournisseur :</strong> ${item.supplier}</p>
-            `;
+        const content = document.getElementById('detailsContent');
+        if (item) {
+            let html = '';
+            if (entity === 'products') {
+                html = `
+                    <p><strong data-i18n="name">Nom :</strong> ${item.name}</p>
+                    <p><strong data-i18n="category">Catégorie :</strong> ${item.category}</p>
+                    <p><strong data-i18n="price">Prix :</strong> ${item.price}</p>
+                    <p><strong data-i18n="stock">Stock :</strong> ${item.stock}</p>
+                    <p><strong data-i18n="supplier">Fournisseur :</strong> ${item.supplier}</p>
+                `;
+            } else if (entity === 'suppliers') {
+                html = `
+                    <p><strong data-i18n="name">Nom :</strong> ${item.name}</p>
+                    <p><strong data-i18n="contact">Contact :</strong> ${item.contact}</p>
+                    <p><strong data-i18n="address">Adresse :</strong> ${item.address}</p>
+                `;
+            } else if (entity === 'warehouses') {
+                html = `
+                    <p><strong data-i18n="name">Nom :</strong> ${item.name}</p>
+                    <p><strong data-i18n="location">Localisation :</strong> ${item.location}</p>
+                    <p><strong data-i18n="capacity">Capacité :</strong> ${item.capacity}</p>
+                `;
+            } else if (entity === 'categories') {
+                html = `
+                    <p><strong data-i18n="name">Nom :</strong> ${item.name}</p>
+                    <p><strong data-i18n="description">Description :</strong> ${item.description}</p>
+                `;
+            } else if (entity === 'purchaseOrders') {
+                html = `
+                    <p><strong data-i18n="product">Produit :</strong> ${item.product}</p>
+                    <p><strong data-i18n="quantity">Quantité :</strong> ${item.quantity}</p>
+                    <p><strong data-i18n="date">Date :</strong> ${item.date}</p>
+                    <p><strong data-i18n="supplier">Fournisseur :</strong> ${item.supplier}</p>
+                `;
+            }
+            content.innerHTML = html;
+        } else {
+            content.innerHTML = '<p data-i18n="notFound">Élément non trouvé.</p>';
         }
-        content.innerHTML = html;
-    } else {
-        content.innerHTML = '<p data-i18n="notFound">Élément non trouvé.</p>';
-    }
 
-    function exportPDF() {
-        const { jsPDF } = window.jspdf;
-        const doc = new jsPDF();
-        doc.text(`Détails pour ${entity}: ${item.name || item.product || 'Item'}`, 10, 10);
-        // Ajoute les champs dynamiquement
-        let y = 20;
-        for (const p of content.querySelectorAll('p')) {
-            doc.text(p.textContent, 10, y);
-            y += 10;
+        function exportPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            doc.text(`Détails pour ${entity}: ${item.name || item.product || 'Item'}`, 10, 10);
+            let y = 20;
+            for (const p of content.querySelectorAll('p')) {
+                doc.text(p.textContent, 10, y);
+                y += 10;
+            }
+            doc.save(`${entity}-${id}.pdf`);
         }
-        doc.save(`${entity}-${id}.pdf`);
-    }
-</script>
+    </script>
 </body>
 </html>
