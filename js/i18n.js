@@ -1,3 +1,4 @@
+// js/i18n.js (ajouté les clés pour toutes les entités)
 const translations = {
     en: {
         dashboard: 'Dashboard',
@@ -11,7 +12,33 @@ const translations = {
         login: 'Login',
         username: 'Username',
         password: 'Password',
-        connect: 'Connect' .
+        connect: 'Connect',
+        addProduct: 'Add Product',
+        name: 'Name',
+        category: 'Category',
+        price: 'Price',
+        stock: 'Stock',
+        supplier: 'Supplier',
+        actions: 'Actions',
+        productForm: 'Product Form',
+        save: 'Save',
+        exportCSV: 'Export CSV',
+        addSupplier: 'Add Supplier',
+        contact: 'Contact',
+        address: 'Address',
+        supplierForm: 'Supplier Form',
+        addWarehouse: 'Add Warehouse',
+        location: 'Location',
+        capacity: 'Capacity',
+        warehouseForm: 'Warehouse Form',
+        addCategory: 'Add Category',
+        description: 'Description',
+        categoryForm: 'Category Form',
+        addPurchaseOrder: 'Add Purchase Order',
+        product: 'Product',
+        quantity: 'Quantity',
+        date: 'Date',
+        purchaseOrderForm: 'Purchase Order Form'
     },
     fr: {
         dashboard: 'Tableau de bord',
@@ -25,7 +52,33 @@ const translations = {
         login: 'Connexion',
         username: 'Nom d\'utilisateur',
         password: 'Mot de passe',
-        connect: 'Se connecter'
+        connect: 'Se connecter',
+        addProduct: 'Ajouter Produit',
+        name: 'Nom',
+        category: 'Catégorie',
+        price: 'Prix',
+        stock: 'Stock',
+        supplier: 'Fournisseur',
+        actions: 'Actions',
+        productForm: 'Formulaire Produit',
+        save: 'Enregistrer',
+        exportCSV: 'Exporter CSV',
+        addSupplier: 'Ajouter Fournisseur',
+        contact: 'Contact',
+        address: 'Adresse',
+        supplierForm: 'Formulaire Fournisseur',
+        addWarehouse: 'Ajouter Entrepôt',
+        location: 'Localisation',
+        capacity: 'Capacité',
+        warehouseForm: 'Formulaire Entrepôt',
+        addCategory: 'Ajouter Catégorie',
+        description: 'Description',
+        categoryForm: 'Formulaire Catégorie',
+        addPurchaseOrder: 'Ajouter Commande d\'Achat',
+        product: 'Produit',
+        quantity: 'Quantité',
+        date: 'Date',
+        purchaseOrderForm: 'Formulaire Commande d\'Achat'
     },
     ar: {
         dashboard: 'لوحة القيادة',
@@ -39,24 +92,49 @@ const translations = {
         login: 'تسجيل الدخول',
         username: 'اسم المستخدم',
         password: 'كلمة المرور',
-        connect: 'الاتصال'
+        connect: 'الاتصال',
+        addProduct: 'إضافة منتج',
+        name: 'الاسم',
+        category: 'الفئة',
+        price: 'السعر',
+        stock: 'المخزون',
+        supplier: 'المورد',
+        actions: 'الإجراءات',
+        productForm: 'نموذج المنتج',
+        save: 'حفظ',
+        exportCSV: 'تصدير CSV',
+        addSupplier: 'إضافة مورد',
+        contact: 'الاتصال',
+        address: 'العنوان',
+        supplierForm: 'نموذج المورد',
+        addWarehouse: 'إضافة مستودع',
+        location: 'الموقع',
+        capacity: 'السعة',
+        warehouseForm: 'نموذج المستودع',
+        addCategory: 'إضافة فئة',
+        description: 'الوصف',
+        categoryForm: 'نموذج الفئة',
+        addPurchaseOrder: 'إضافة طلب شراء',
+        product: 'المنتج',
+        quantity: 'الكمية',
+        date: 'التاريخ',
+        purchaseOrderForm: 'نموذج طلب الشراء'
     }
 };
 
 function setLanguage(lang) {
     localStorage.setItem('lang', lang);
-    location.reload(); // Recharger la page pour appliquer les traductions
+    location.reload();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const lang = localStorage.getItem('lang') || 'fr'; // Français par défaut
+    const lang = localStorage.getItem('lang') || 'fr';
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.dataset.i18n;
         if (translations[lang][key]) {
             el.textContent = translations[lang][key];
         }
     });
-    // Support RTL pour l'arabe (texte de droite à gauche)
     if (lang === 'ar') {
         document.body.setAttribute('dir', 'rtl');
         document.body.style.textAlign = 'right';
