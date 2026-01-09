@@ -1,4 +1,3 @@
-// js/i18n.js
 const translations = {
     en: {
         dashboard: 'Dashboard',

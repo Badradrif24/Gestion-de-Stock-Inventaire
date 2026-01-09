@@ -1,16 +1,12 @@
-// js/main.js
-// Vérification de session pour toutes les pages sauf login
 if (window.location.pathname !== '/index.html' && window.location.pathname !== '/' && !localStorage.getItem('loggedIn')) {
     window.location.href = 'index.html';
 }
 
-// Fonction de déconnexion
 function logout() {
     localStorage.removeItem('loggedIn');
     window.location.href = 'index.html';
 }
 
-// Logique CRUD générale
 let currentPage = 1;
 const pageSize = 10;
 let data = [];
@@ -115,7 +111,10 @@ function sortTable(col) {
 
 const searchInput = document.getElementById('search');
 if (searchInput) searchInput.addEventListener('input', (e) => {
-    filteredData = data.filter(item => item.name.toLowerCase().includes(e.target.value.toLowerCase()) || item.product.toLowerCase().includes(e.target.value.toLowerCase()));
+    const path = window.location.pathname;
+    let field = 'name';
+    if (path.includes('purchaseOrders.html')) field = 'product';
+    filteredData = data.filter(item => item[field].toLowerCase().includes(e.target.value.toLowerCase()));
     renderTable(1);
 });
 
@@ -194,7 +193,8 @@ function editItem(id) {
 }
 
 function deleteItem(id) {
-    if (confirm('Êtes-vous sûr ?')) {
+    const lang = localStorage.getItem('lang') || 'fr';
+    if (confirm(translations[lang].confirmDelete)) {
         data = data.filter(item => item.id !== id);
         const path = window.location.pathname;
         const entity = path.split('/').pop().replace('.html', '');
@@ -217,7 +217,6 @@ function exportCSV(entity) {
     link.click();
 }
 
-// Initialisation pour toutes les pages
 const path = window.location.pathname;
 if (path.includes('products.html')) initCRUD('products');
 if (path.includes('suppliers.html')) initCRUD('suppliers');

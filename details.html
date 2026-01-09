@@ -6,13 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion d'Inventaire - Détails</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/libs/faker.min.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="dashboard.html">Inventory Co.</a>
+            <a class="navbar-brand" href="dashboard.html">
+                <img src="img/emsi-logo.png" alt="EMSI Logo" style="height: 40px;">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -26,6 +29,10 @@
                             <li><a class="dropdown-item" href="#" onclick="setLanguage('ar')">العربية</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item d-flex align-items-center">
+                        <img src="img/badr-shop.png" alt="Admin Photo" style="height: 30px; border-radius: 50%; margin-right: 10px;">
+                        <span>Admin</span>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" onclick="logout()" data-i18n="logout">Déconnexion</a>
                     </li>
@@ -36,15 +43,15 @@
 
     <div class="container-fluid">
         <div class="row">
-            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
                 <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
-                        <li class="nav-item"><a class="nav-link" href="dashboard.html" data-i18n="dashboard">Tableau de bord</a></li>
-                        <li class="nav-item"><a class="nav-link" href="products.html" data-i18n="products">Produits</a></li>
-                        <li class="nav-item"><a class="nav-link" href="suppliers.html" data-i18n="suppliers">Fournisseurs</a></li>
-                        <li class="nav-item"><a class="nav-link" href="warehouses.html" data-i18n="warehouses">Entrepôts</a></li>
-                        <li class="nav-item"><a class="nav-link" href="categories.html" data-i18n="categories">Catégories</a></li>
-                        <li class="nav-item"><a class="nav-link" href="purchaseOrders.html" data-i18n="purchaseOrders">Commandes d'Achat</a></li>
+                        <li class="nav-item"><a class="nav-link" href="dashboard.html"><i class="bi bi-speedometer2"></i> <span data-i18n="dashboard">Tableau de bord</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="products.html"><i class="bi bi-box-seam"></i> <span data-i18n="products">Produits</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="suppliers.html"><i class="bi bi-people"></i> <span data-i18n="suppliers">Fournisseurs</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="warehouses.html"><i class="bi bi-building"></i> <span data-i18n="warehouses">Entrepôts</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="categories.html"><i class="bi bi-tags"></i> <span data-i18n="categories">Catégories</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="purchaseOrders.html"><i class="bi bi-cart"></i> <span data-i18n="purchaseOrders">Commandes d'Achat</span></a></li>
                     </ul>
                 </div>
             </nav>

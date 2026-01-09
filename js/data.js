@@ -1,4 +1,3 @@
-// js/data.js (inchangé)
 const entities = ['products', 'suppliers', 'warehouses', 'categories', 'purchaseOrders'];
 
 function generateFakeData(entity, count = 50) {
