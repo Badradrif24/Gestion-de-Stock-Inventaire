@@ -17,8 +17,9 @@ Application web de gestion de stock (backoffice) permettant :
 - Interface responsive (Bootstrap)
 
 voici comment faire marcher l'application localement :
-
-1) Telecharge l'extension live server (celle de Ritwick Dey)
-2) va sur index.html 
-3) fait un click droit et selectionne open with live server
-4) mettre le nom de l'utilisateur et le mot de passe (le nom dutilisateur sont tout les 2 admin)
+1)  Telecharge le dossier de mon application sur mon repo github (clicke sur le boutton vert ou ya ecris code puis dowload zip)
+2) après avoir extrais le dossier du zip ouvre le sur visual studio code (file en haut a gauche puis open folder)
+3) Telecharge l'extension live server (celle de Ritwick Dey) sur visual studio code
+4) va ensuite sur index.html 
+5) fait un click droit et selectionne open with live server
+6) met le nom de l'utilisateur et le mot de passe (le nom dutilisateur sont tout les 2 admin)
