@@ -1,3 +1,4 @@
+// js/data.js
 const entities = ['products', 'suppliers', 'warehouses', 'categories', 'purchaseOrders'];
 
 function generateFakeData(entity, count = 50) {
@@ -27,11 +28,24 @@ function generateFakeData(entity, count = 50) {
                 capacity: faker.datatype.number({min: 1000, max: 10000})
             }));
         case 'categories':
-            return Array.from({length: count}, () => ({
+            return [
+                { id: faker.datatype.uuid(), name: 'Electronics', description: 'Everything linked with tech like Smartphone, Pc, Smartwatch' },
+                { id: faker.datatype.uuid(), name: 'Kids', description: 'Mostly Kids toys or kids accessories' },
+                // Add more realistic categories
+                { id: faker.datatype.uuid(), name: 'Clothing', description: 'Apparel for men, women, and children' },
+                { id: faker.datatype.uuid(), name: 'Books', description: 'Fiction, non-fiction, and educational books' },
+                { id: faker.datatype.uuid(), name: 'Home Appliances', description: 'Kitchen and home appliances like refrigerators, microwaves' },
+                { id: faker.datatype.uuid(), name: 'Sports', description: 'Sports equipment and gear' },
+                { id: faker.datatype.uuid(), name: 'Beauty', description: 'Beauty products and cosmetics' },
+                { id: faker.datatype.uuid(), name: 'Furniture', description: 'Home and office furniture' },
+                { id: faker.datatype.uuid(), name: 'Groceries', description: 'Everyday food and household items' },
+                { id: faker.datatype.uuid(), name: 'Automotive', description: 'Car parts and accessories' },
+                // Add up to count if needed, but 10 is sufficient for example
+            ].concat(Array.from({length: count - 10}, () => ({
                 id: faker.datatype.uuid(),
                 name: faker.commerce.department(),
                 description: faker.lorem.sentence()
-            }));
+            })));
         case 'purchaseOrders':
             return Array.from({length: count}, () => ({
                 id: faker.datatype.uuid(),

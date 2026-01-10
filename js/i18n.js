@@ -1,3 +1,4 @@
+// js/i18n.js
 const translations = {
     en: {
         dashboard: 'Dashboard',
@@ -46,7 +47,8 @@ const translations = {
         lowStock: 'Low Stock Items',
         totalOrders: 'Total Orders',
         totalCategories: 'Total Categories',
-        allSuppliers: 'All Suppliers'
+        allSuppliers: 'All Suppliers',
+        searchPlaceholder: 'Enter at least 2 letters to search'
     },
     fr: {
         dashboard: 'Tableau de bord',
@@ -95,7 +97,8 @@ const translations = {
         lowStock: 'Articles en Stock Bas',
         totalOrders: 'Total Commandes',
         totalCategories: 'Total Catégories',
-        allSuppliers: 'Tous les Fournisseurs'
+        allSuppliers: 'Tous les Fournisseurs',
+        searchPlaceholder: 'Entrer au moins 2 lettres pour chercher'
     },
     ar: {
         dashboard: 'لوحة القيادة',
@@ -144,7 +147,8 @@ const translations = {
         lowStock: 'عناصر مخزون منخفض',
         totalOrders: 'إجمالي الطلبات',
         totalCategories: 'إجمالي الفئات',
-        allSuppliers: 'جميع الموردين'
+        allSuppliers: 'جميع الموردين',
+        searchPlaceholder: 'أدخل حرفين على الأقل للبحث'
     }
 };
 
@@ -159,6 +163,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const key = el.dataset.i18n;
         if (translations[lang][key]) {
             el.textContent = translations[lang][key];
+        }
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.dataset.i18nPlaceholder;
+        if (translations[lang][key]) {
+            el.placeholder = translations[lang][key];
         }
     });
     if (lang === 'ar') {
