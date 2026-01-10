@@ -22,4 +22,4 @@ voici comment faire marcher l'application localement :
 3) Telecharge l'extension live server (celle de Ritwick Dey) sur visual studio code
 4) va ensuite sur index.html 
 5) fait un click droit et selectionne open with live server
-6) met le nom de l'utilisateur et le mot de passe (le nom dutilisateur sont tout les 2 admin)
+6) met le nom de l'utilisateur et le mot de passe (qui est  admin pour les 2)
