@@ -1,22 +1,18 @@
-# Gestion d'Inventaire Backoffice
+## Déploiement
+
+Application déployée sur Vercel :
+
+🔗 https://badr-inventory-management-lppyf8dac-badradrif24s-projects.vercel.app
 
 ## Description
-Application backoffice pour gérer un inventaire avec CRUD sur 5 entités et un dashboard avec statistiques.
 
-## Fonctionnalités
-- CRUD pour Produits, Fournisseurs, Entrepôts, Catégories, Commandes d'Achat.
-- Dashboard avec 5 graphiques (pie, bar, line, donut, scatter).
-- Login statique (admin/admin).
-- Interface responsive avec Bootstrap.
-- Internationalisation (Fr, En, Ar).
-- Pagination, tri, filtres, export CSV/PDF.
+Application web de gestion de stock (backoffice) permettant :
+- CRUD sur Produits, Fournisseurs, Catégories, Entrepôts, Commandes d’achat
+- Dashboard avec indicateurs (totaux, stock bas)
+- Graphiques (bar, pie, line, donut)
+- Internationalisation (FR / EN / AR)
+- Recherche, tri, pagination
+- Stockage local via localStorage
+- Interface responsive (Bootstrap)
 
-## APIs Utilisées
-Données simulées avec Faker.js et localStorage.
-
-## Instructions d'Installation
-1. Clonez le repo : git clone [URL de ton repo].
-2. Ouvrez index.html dans un navigateur.
-
-## Déploiement
-[Lien Netlify à ajouter plus tard]
+Projet réalisé en HTML, CSS, JavaScript (front-end).
