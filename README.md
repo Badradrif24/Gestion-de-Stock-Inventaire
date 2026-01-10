@@ -7,7 +7,9 @@ Application déployée sur Vercel :
 ## Description
 
 Application web de gestion de stock (backoffice) permettant :
-- CRUD sur Produits, Fournisseurs, Catégories, Entrepôts, Commandes d’achat
+- CRUD sur 5 entités (produits, fournisseurs ,entrepôts, catégories, commandes d'achat)
+- dashboard avec KPIs et graphs (pie, bar, line, donut, scatter),
+-  export des données des entité en CSV et PDF
 - Dashboard avec indicateurs (totaux, stock bas)
 - Graphiques (bar, pie, line, donut)
 - Internationalisation (FR / EN / AR)
